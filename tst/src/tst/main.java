@@ -7,5 +7,6 @@ public class tst
    //向屏幕上写字符串"HelloWorld!"
     {
       System.out.print("HelloWorld!");
+      jhgfds;gjasheopfvghaes;vgashfvelaeskhg7aesfjkhsaeho;ief
     }
 }
