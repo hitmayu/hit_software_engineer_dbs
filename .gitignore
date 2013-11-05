@@ -1,0 +1,12 @@
+static/font-awesome
+happy.apk
+temp
+cache
+.*.swp
+.*.swo
+db_bak
+avatar
+data
+.DS_store
+phpmyadmin
+
