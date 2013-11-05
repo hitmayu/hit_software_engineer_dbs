@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="<?php echo $ENCODING; ?>" />
-		<title>Powered by <?php echo $PACKAGE; ?></title>
+		<title>{{ @title }}</title>
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
-		<link rel="stylesheet" href="ui/css/base.css" type="text/css" />
-		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="{{@UI}}css/base.css" type="text/css" />
+		<link rel="stylesheet" href="{{@UI}}css/theme.css" type="text/css" />
 	</head>
 	<body>
 		<div class="header center">
 			<p>On this site will rise another Web masterpiece powered by</p>
-			<p><img src="ui/images/logo.png" /></p>
+			<p><img src="{{@UI}}images/logo.png" /></p>
 		</div>
 		<div class="content">
 			<h3>Version <?php echo $VERSION; ?></h3>
@@ -64,7 +64,7 @@
 			<p>If you feel that this software is one great weapon to have in your programming arsenal, it saves you a lot of time and money, use it for commercial gain or in your business organization, please consider making a donation to the project. A significant amount of time, effort, and money has been spent on this project. Your donations help keep this project alive and the development team motivated. Donors and sponsors get priority support (24-hour response time on business days).</p>
 			<h3>Support F3</h3>
 			<p>F3 is community-driven open-source software. Support the development of the Fat-Free Framework. Your contributions help keep this project alive.</p>
-			<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJSQL8N5LPDAY" target="_blank"><img src="ui/images/donate.png" title="Donate" /></a><a href="https://coinbase.com/checkouts/7986a0da214006256d470f2f8e1a15cf" target="_blank"><img src="ui/images/bitcoin.png" /></a></p>
+			<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJSQL8N5LPDAY" target="_blank"><img src="{{@UI}}images/donate.png" title="Donate" /></a><a href="https://coinbase.com/checkouts/7986a0da214006256d470f2f8e1a15cf" target="_blank"><img src="{{@UI}}images/bitcoin.png" /></a></p>
 			<p/>
 		</div>
 		<div class="footer center">

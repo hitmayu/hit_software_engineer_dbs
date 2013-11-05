@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{@ title }}</title>
+		<link rel="stylesheet" href="{{@UI}}css/base.css" type="text/css" />
+		<link rel="stylesheet" href="{{@UI}}css/theme.css" type="text/css" />
+		<style><?php include('app/lib/code.css'); ?></style>
+	</head>
+	<body>
+		<?php echo Markdown::instance()->
+			convert(Base::instance()->read('readme.md')); ?>
+	</body>
+</html>
