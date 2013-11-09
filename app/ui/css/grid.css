@@ -1,3 +1,27 @@
+.container {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 /*
  * Style twaks
  * --------------------------------------------------
@@ -6,8 +30,8 @@ body {
   padding-top: 70px;
 }
 footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 1px;
+  padding-right: 1px;
 }
 
 /*
@@ -46,13 +70,21 @@ footer {
     width: 50%; /* 6 columns */
   }
 }
+table
+{
+   width:100%;
+}
 
 td{
-  width: 350px;
-  height: 96px;
+    text-align: center;
+    hiegt:200px;
+    width:200px;
 }
 
 th{
-  width:350px;
-  height: 12px;
+    text-align:center;
+    height:9px;
+    width:140px;
 }
+
+

@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-    <title>{{@title}}</title>
+    <title>校园预约</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="{{@UI}}css/offcanvas.css" rel="stylesheet">
+    <link href="offcanvas.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="grid.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,34 +27,101 @@
   </head>
 
   <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-
     <div class="container">
 
-      <div class="row row-offcanvas">
-<!--        <div class="col-xs-12 col-sm-9">-->
-      <div class="center-block">
+      <div class="page-header">
+        <h1>HIT 校园预约 </h1>
+        <p class="lead"></p>
+      </div>
+      <div class="row">
+        <div class="col-md-3">今天      2013-11-07</div>
+        <div class="col-md-5">  </div>
+        <div class="col-md-3">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default">登陆</button>
+            <button type="button" class="btn btn-default">注册</button>
+          </div>
+      </div>
 
-          <table class = "table-striped table-bordered table-hover">
-            <div class="row">
+
+      <h3></h3>
+      <p><strong></strong></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <table class ="table-condensed">
+           <thead>
+             <tr>
+      <th></th>
+      <th colspan ="5" class="switch">September 1979</th>
+      </tr>
+      <tr>
+        <th class="dow">Mo</th>
+        <th class="dow">Tu</th>
+        <th class="dow">We</th>
+        <th class="dow">Th</th>
+        <th class="dow">Fr</th>
+        <th class="dow">Sa</th>
+        <th class="dow">Su</th>
+      </tr>
+    </thead>
+      <tr heigt = "1">
+        <td class="day old">25</td>
+        <td class="day old">26</td>
+        <td class="day old">27</td>
+        <td class="day old">28</td>
+        <td class="day old">29</td>
+        <td class="day old">30</td>
+        <td class="day">1</td>
+      </tr>
+      <tr>
+        <td class="day">2</td>
+        <td class="day">3</td>
+        <td class="day">4</td>
+        <td class="day">5</td>
+        <td class="day">6</td>
+        <td class="day">7</td>
+        <td class="day">8</td>
+      </tr>
+      </tr>
+        <td class="day">9</td>
+        <td class="day">10</td>
+        <td class="day">11</td>
+        <td class="day">12</td>
+        <td class="day">13</td>
+        <td class="day">14</td>
+        <td class="day">15</td>
+      </tr>
+      <tr>
+        <td class="day">16</td>
+        <td class="day">17</td>
+        <td class="day">18</td>
+        <td class="day">19</td>
+        <td class="day">20</td>
+        <td class="day">21</td>
+        <td class="day">22</td>
+      </tr>
+      <tr>
+        <td class="day">23</td>
+        <td class="day">24</td>
+        <td class="day">25</td>
+        <td class="day">26</td>
+        <td class="day">27</td>
+        <td class="day">28</td>
+        <td class="day">29</td>
+      </tr>
+      <tr>
+        <td class="day">30</td>
+        <td class="day">31</td>
+        <td class="day new">1</td>
+        <td class="day new">2</td>
+        <td class="day new">3</td>
+        <td class="day new">4</td>
+        <td class="day new">5</td>
+      </tr>
+    </tbody>
+  </table></div>
+        <div class="col-md-10">
+          <table class = "table-hover table-bordered"  >
             <thead>
               <th> </th>
               <th>Mo</th>
@@ -63,11 +134,11 @@
             </thead>
             <tbody>
              <tr>
-               <td>6:00-8:00am</td> 
+               <th>6:00-8:00</th> 
                <td> 
-                <table class = "table-striped  table-hover">
+               <table class = "table-striped  table-hover">
                   <tr>
-                    <th> </th>
+                    <th>  </th>
                    </tr>
                   <tr>
                      <th> </th>
@@ -90,10 +161,10 @@
                   <tr>
                      <th> </th>
                   </tr>
-                </table>
+                </table> 
                </td>  
-                              <td>
-               <table class = "table-striped  table-hover">
+             <td>
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -149,7 +220,7 @@
                 </table> 
                </td>  
                               <td>
-               <table class = "table-striped  table-hover">
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -205,7 +276,94 @@
                 </table> 
                </td>  
                 <td>
+              <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+              <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>8:00-9:00</th> 
+               <td> 
                <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             <td>
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -260,9 +418,121 @@
                   </tr>
                 </table> 
                </td>  
+                              <td>
+              <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                <td>
+              <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+              <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
              </tr>
              <tr>
-               <td>8:00-10:00am</td>
+               <th>9:00-10:00</th>
                <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -292,7 +562,7 @@
                 </table> 
                </td>  
                <td>
-               <table class = "table-striped  table-hover">
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -320,7 +590,7 @@
                 </table> 
                </td> 
                               <td>
-               <table class = "table-striped  table-hover">
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -348,7 +618,7 @@
                 </table> 
                </td>  
                               <td>
-               <table class = "table-striped  table-hover">
+              <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -376,7 +646,7 @@
                 </table> 
                </td>  
                               <td>
-               <table class = "table-striped  table-hover">
+             <table class = "table-striped  table-hover">
                   <tr>
                     <th> </th>
                    </tr>
@@ -461,7 +731,7 @@
                </td>  
              </tr>
              <tr>
-               <td>10:00-12:00am</td>
+               <th>10:00-11:00</th>
                               <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -660,7 +930,7 @@
                </td>  
              </tr>
              <tr>
-               <td>12:00-14:00pm</td>
+               <th>11:00-12:00</th>
                               <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -859,7 +1129,7 @@
                </td>  
              </tr>
              <tr>
-               <td>14:00-16:00pm</td>
+               <th>12:00-13:00</th>
                               <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -1058,7 +1328,7 @@
                </td>  
              </tr>
              <tr>
-               <td>16:00-18:00pm</td>
+               <th>13:00-14:00</th>
                               <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -1257,7 +1527,1400 @@
                </td>  
              </tr>
              <tr>
-               <td>18:00-23:00pm</td>
+               <th>14:00-15:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>15:00-16:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+            <tr>
+               <th>16:00-17:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>17:00-18:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>18:00-19:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>19:00-20:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>20:00-21:00</th>
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>   
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+                              <td>
+               <table class = "table-striped  table-hover">
+                  <tr>
+                    <th> </th>
+                   </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                  <tr>
+                     <th> </th>
+                  </tr>
+                </table> 
+               </td>  
+             </tr>
+             <tr>
+               <th>21:00-23:00</th>
                               <td>
                <table class = "table-striped  table-hover">
                   <tr>
@@ -1456,23 +3119,15 @@
                </td>  
              </tr>
            </tbody>
-          </div>
+           </table></div>
+      </div>
 
-          <div class="row">
-            
-  <!--        </div><!--/row-->
-        </div><!--/span-->
-
-
-    </div><!--/.container-->
-
+      
+    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../assets/js/jquery.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>
