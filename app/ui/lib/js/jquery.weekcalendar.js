@@ -38,7 +38,7 @@
         daysToShow: 7,
         minBodyHeight: 100,
         firstDayOfWeek: function(calendar) {
-                  //if ($(calendar).weekCalendar('option', 'daysToShow') != 5) {
+                 // if ($(calendar).weekCalendar('option', 'daysToShow') != 5) {
                   //  return 0;
                   //} else {
                     //workweek
@@ -66,12 +66,12 @@
         switchDisplay: {},
         scrollToHourMillis: 500,
         allowEventDelete: true,
-        allowCalEventOverlap: false,
+        allowCalEventOverlap: true,
         overlapEventsSeparate: false,
         totalEventsWidthPercentInOneColumn: 100,
         readonly: false,
         allowEventCreation: true,
-        hourLine: false,
+        hourLine: true,
         deletable: function(calEvent, element) {
           return true;
         },
@@ -157,7 +157,7 @@
          * one user.
          * @type {boolean}
          */
-        showAsSeparateUsers: false,
+        showAsSeparateUsers: true,
         /**
          * callback used to read user id from a user object.
          * @param {Object} user the user to retrieve the id from.
@@ -704,7 +704,7 @@
                 calendarNavHtml += '<button class=\"wc-today\">' + options.buttonText.today + '</button>';
                 calendarNavHtml += '<button class=\"wc-next\">' + options.buttonText.nextWeek + '</button>';
               calendarNavHtml += '</div>';
-              calendarNavHtml += '<calender_h1 class=\"wc-title\"></calender_h1>';
+              calendarNavHtml += '<h1 class=\"wc-title\"></h1>';
             calendarNavHtml += '</div>';
 
             $(calendarNavHtml).appendTo($calendarContainer);
@@ -763,7 +763,7 @@
         }else{
             var calendarNavHtml = '';
             calendarNavHtml += '<div class=\"ui-widget-header wc-toolbar\">';
-              calendarNavHtml += '<calender_h1 class=\"wc-title\"></calender_h1>';
+              calendarNavHtml += '<h1 class=\"wc-title\"></h1>';
             calendarNavHtml += '</div>';
             $(calendarNavHtml).appendTo($calendarContainer);
 
@@ -838,7 +838,7 @@
             showAsSeparatedUser = options.showAsSeparateUsers && options.users && options.users.length,
             $calendarBody, $calendarTableTbody;
         // create the structure
-        $calendarBody = '<div class=\"wc-scrollable-grid\">';
+        $calendarBody = '<div class=\"wc-scrollable-grid\" style=\"height:493px\">';
         $calendarBody += '<table class=\"wc-time-slots\">';
         $calendarBody += '<tbody>';
         $calendarBody += '</tbody>';
@@ -864,7 +864,7 @@
           Find a way to handle it
         */
         $calendarContainer.find('.wc-time-header-cell').css({
-          height: (options.timeslotHeight * options.timeslotsPerHour) - 11,
+          height: (options.timeslotHeight * options.timeslotsPerHour) - 1,
           padding: 5
         });
         //add the user data to every impacted column
@@ -2020,9 +2020,9 @@
        */
       _disableTextSelect: function($elements) {
           $elements.each(function() {
-            if ($.browser.mozilla) {//Firefox
+            if (typeof this.style.MozUserSelect !== 'undefined') {//Firefox
                 $(this).css('MozUserSelect', 'none');
-            } else if ($.browser.msie) {//IE
+            } else if (typeof this.onselectstart !== 'undefined') {//IE
                 $(this).bind('selectstart', function() {
                   return false;
                 });
@@ -2620,7 +2620,7 @@
           return options.getHeaderDate(date, this.element);
         }
         var dayName = options.useShortDayNames ? options.shortDays[date.getDay()] : options.longDays[date.getDay()];
-        return dayName; //+ (options.headerSeparator) + this._formatDate(date, options.dateFormat);
+        return dayName;
       },
 
 

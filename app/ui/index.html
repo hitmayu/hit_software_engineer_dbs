@@ -5,28 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.png">
 
     <title>{{@title}}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{@UI}}lib/css/bootstrap.css" rel="stylesheet">
+    <link href="{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{@UI}}lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
-    <link rel='stylesheet' type='text/css' href='{{@UI}}lib/css/jquery-ui-1.8.11.custom.css' />
+    <link rel='stylesheet' type='text/css' href='{{@UI}}lib/css/jquery-ui.min.css' />
     <link rel='stylesheet' type='text/css' href='{{@UI}}lib/css/jquery.weekcalendar.css' />
     <link rel='stylesheet' type='text/css' href='{{@UI}}css/teacher.css' />
     <style type='text/css'>
-    body {
-      font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-      margin: 0;
-    }
-
-    h1 {
-      margin: 0 0 1em;
-      padding: 0.5em;
-    }
-
     p.description {
       font-size: 0.8em;
       padding: 1em;
@@ -35,22 +24,11 @@
       margin-right: 400px;
     }
 
-    #message {
-      font-size: 0.7em;
-      position: absolute;
-      top: 1em;
-      right: 1em;
-      width: 350px;
-      display: none;
-      padding: 1em;
-      background: #ffc;
-      border: 1px solid #dda;
-    }
     </style>
 
-    <script type='text/javascript' src='{{@UI}}lib/js/jquery-1.4.4.min.js'></script>
-    <script type='text/javascript' src='{{@UI}}lib/js/jquery-ui-1.8.11.custom.min.js'></script>
-
+    <script type='text/javascript' src='{{@UI}}lib/js/jquery-2.0.3.min.js'></script>
+    <script type='text/javascript' src='{{@UI}}lib/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='{{@UI}}lib/js/bootstrap.min.js'></script>
     <script type="text/javascript" src="{{@UI}}lib/js/date.js"></script>
     <script type='text/javascript' src='{{@UI}}lib/js/jquery.weekcalendar.js'></script>
     <script type='text/javascript'>
@@ -74,39 +52,36 @@
           },
           eventRender : function(calEvent, $event) {
             if (calEvent.end.getTime() < new Date().getTime()) {
-              $event.css('backgroundColor', '#aaa');
-              $event.find('.time').css({'backgroundColor': '#999', 'border':'1px solid #888'});
+              $event.css('backgroundColor', '#DDD');
+              $event.find('.wc-time').css({'backgroundColor': '#DDD', 'border':'1px solid #DDD'});
+            }else{
+              $event.css('backgroundColor', '#97CBFF');
+              $event.find('.wc-time').css({'backgroundColor': '#97CBFF', 'border':'1px solid #97CBFF'});
             }
           },
           eventNew: function(calEvent, $event) {
-            displayMessage('<strong>Added event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
             alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
           },
           eventDrop: function(calEvent, $event) {
-            displayMessage('<strong>Moved Event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
+            
           },
           eventResize: function(calEvent, $event) {
-            displayMessage('<strong>Resized Event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
+            
           },
           eventClick: function(calEvent, $event) {
-            displayMessage('<strong>Clicked Event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
+            
           },
           eventMouseover: function(calEvent, $event) {
-            displayMessage('<strong>Mouseover Event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
+            
           },
           eventMouseout: function(calEvent, $event) {
-            displayMessage('<strong>Mouseout Event</strong><br/>Start: ' + calEvent.start + '<br/>End: ' + calEvent.end);
+
           },
           noEvents: function() {
-            displayMessage('There are no events for this week');
+            
           }
         });
 
-        function displayMessage(message) {
-          $('#message').html(message).fadeIn();
-        }
-
-        $('<div id="message" class="ui-corner-all"></div>').prependTo($('body'));
       });
 
     </script>
@@ -120,7 +95,14 @@
       <ul class="nav navbar-nav navbar-right">
         <div class="btn-group navbar-btn">
           <button type="button" class="btn btn-default">今天</button>
-          <button type="button" class="btn btn-default">2011年7月11日</button>
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">2011年7月11日 <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
         </div>
         <div class="btn-group navbar-btn" style="width:100px"></div>
         <div class="btn-group navbar-btn">
