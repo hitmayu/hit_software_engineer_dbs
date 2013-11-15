@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--    <link rel="shortcut icon" href="favicon.png">-->
+
+    <title>{{@title}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{@UI}}css/login.css" rel="stylesheet">
+    <script src="{{@UI}}lib/js/bootstrap.min.js"></script>
+  
+  </head>
+  <body>
+  	<div class="container">
+      <div class="row">
+       <div class="col-md-6"> 
+       	 <h2 class="form-signin-heading"  style="text-align:center">学生注册</h2>
+       <form class="form-horizontal" action="{{@WEB_ROOT}}sinfo" method="post">
+
+        <input name="uname" type="text" class="form-control" placeholder="真实姓名" autofocus>
+
+		<input name="uname" type="text" class="form-control" placeholder="电话号码" autofocus>
+
+		<input name="uname" type="text" class="form-control" placeholder="学院" autofocus>
+
+		<input name="uname" type="text" class="form-control" placeholder="专业" autofocus>
+	
+<div class="form-actions">
+	<div class="controls btn-groups">
+		<input type="reset" class="btn">
+		<button type="submit" class="btn  btn-primary">提交</button>
+	</div>
+</div>
+
+
+</form>
+</div>
+</div>
+</div>
+</body>
+</html>
