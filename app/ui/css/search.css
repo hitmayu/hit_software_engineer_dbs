@@ -1,0 +1,10 @@
+#search
+{
+   font-size:14px;
+}
+#search .k{padding:2px 1px; width:320px;}
+#search_auto{border:1px solid #817FB2; position:absolute; display:none;}
+#search_auto li{background:#FFF; text-align:left;}
+#search_auto li.cls{text-align:right;}
+#search_auto li a{display:block; padding:5px 6px; cursor:pointer; color:#666;}
+#search_auto li a:hover{background:#D8D8D8; text-decoration:none; color:#000;}
