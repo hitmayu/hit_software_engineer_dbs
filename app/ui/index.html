@@ -6,15 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{@title}}</title>
+    <title><?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{@UI}}lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?php echo $UI; ?>lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $UI; ?>lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
-    <link rel='stylesheet' type='text/css' href='{{@UI}}lib/css/jquery-ui.min.css' />
-    <link rel='stylesheet' type='text/css' href='{{@UI}}lib/css/jquery.weekcalendar.css' />
-    <link rel='stylesheet' type='text/css' href='{{@UI}}css/teacher.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>lib/css/jquery-ui.min.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/jquery.weekcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/teacher.css' />
     <style type='text/css'>
     p.description {
       font-size: 0.8em;
@@ -23,21 +23,28 @@
       top: 3.2em;
       margin-right: 400px;
     }
-
     </style>
 
-    <script type='text/javascript' src='{{@UI}}lib/js/jquery-2.0.3.min.js'></script>
-    <script type='text/javascript' src='{{@UI}}lib/js/jquery-ui.min.js'></script>
-    <script type='text/javascript' src='{{@UI}}lib/js/bootstrap.min.js'></script>
-    <script type="text/javascript" src="{{@UI}}lib/js/date.js"></script>
-    <script type='text/javascript' src='{{@UI}}lib/js/jquery.weekcalendar.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-2.0.3.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="<?php echo $UI; ?>lib/js/date.js"></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>js/jquery.weekcalendar.js'></script>
     <script type='text/javascript'>
-      var year = new Date().getFullYear();
-      var month = new Date().getMonth();
-      var day = new Date().getDate();
-
       var eventData = {
-        events : []
+        events : [
+          <?php
+            $count = count($plan);
+            for ($i=0; $i <$count; $i++) {
+              if ($i>0) echo ",\n";
+              $start_hour=floor($plan[$i]['time_from']/4)+6;
+              $start_min=($plan[$i]['time_from']%4)*15;
+              $end_hour=floor($plan[$i]['time_to']/4)+6;
+              $end_min=($plan[$i]['time_to']%4)*15;
+              echo '{\'id\':'.$plan[$i]['id'].', \'start\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$start_hour.', '.$start_min.'), \'end\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$end_hour.', '.$end_min.'),\'title\':\''.$plan[$i]['note'].'\'}';
+            }
+          ?>
+        ]
       };
 
       $(document).ready(
@@ -60,22 +67,40 @@
             }
           },
           eventNew: function(calEvent, $event) {
-            alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $('#date').val($date);
+            $str='新预约时间: ';
+            //$str+=calEvent.start;
+            $str+=$event.find('.wc-time').text();
+            $('#myModalLabel').text($str);
+            $('#myModal').modal();
           },
           eventDrop: function(calEvent, $event) {
-            
+            alert("fuckyou");
           },
           eventResize: function(calEvent, $event) {
-            
+            alert("happyphp");
           },
           eventClick: function(calEvent, $event) {
-            
+            alert("dropdown");
           },
           eventMouseover: function(calEvent, $event) {
-            
+            //alert("over");
           },
           eventMouseout: function(calEvent, $event) {
-
+            //alert("out");
+          },
+          eventDelete: function(calEvent, $event) {
+            //alert("deleted");
+            calendar.weekCalendar('removeEvent',calEvent.id);
           },
           noEvents: function() {
             
@@ -87,7 +112,7 @@
     </script>
   </head>
 
-  <body>
+<body>
     <div class="navbar navbar-fixed-top">
       <ul class="nav navbar-nav">
           <h2>&ensp;HIT 校园预约</h2>
@@ -106,7 +131,7 @@
         </div>
         <div class="btn-group navbar-btn" style="width:100px"></div>
         <div class="btn-group navbar-btn">
-          <a href="{{@WEB_ROOT}}login" class="btn btn-default">登录</a>
+          <a href="<?php echo $WEB_ROOT; ?>login" class="btn btn-default">登录</a>
           <!-- <button type="button" class="btn btn-default" href="/login">登陆</button>-->
           <button type="button" class="btn btn-default">注册</button>
         </div>
@@ -115,4 +140,52 @@
       <div id='calendar'></div>
     </div> <!-- /container -->
   </body>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" method="post">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">人数:</label>
+            <div class="col-sm-10">
+              <input name="people" type="number" class="form-control" placeholder="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">地址:</label>
+            <div class="col-sm-10">
+              <textarea name="address" class="form-control" placeholder="默认地址" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">留言:</label>
+            <div class="col-sm-10">
+              <textarea name="note" class="form-control" placeholder="默认留言" rows="5"></textarea>
+            </div>
+          </div>
+          <input id="start" type="hidden" name="start" value="">
+          <input type="hidden" name="action" value="add">
+          <input id="end" type="hidden" name="end" value="">
+          <input id="date" type="hidden" name="date" value="">
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-7">
+              <div class="checkbox">
+                <label>
+                  <input name="confirm" type="checkbox">需要确认
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button class="btn btn-default" type="submit">保存</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </html>

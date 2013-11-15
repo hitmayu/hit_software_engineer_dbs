@@ -46,7 +46,7 @@
                   //}
               }, // 0 = Sunday, 1 = Monday, 2 = Tuesday, ... , 6 = Saturday
         useShortDayNames: true,
-        timeSeparator: ' to ',
+        timeSeparator: ' 到 ',
         startParam: 'start',
         endParam: 'end',
         businessHours: {start: 6, end: 23, limitDisplay: true},

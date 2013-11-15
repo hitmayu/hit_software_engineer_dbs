@@ -4,7 +4,8 @@ class Home{
 
 	function run(){
 		F3::set('title',"HIT 校园预约");
-		echo Template::instance()->render('index.html');
+		F3::set('plan', Teacher::get_booking_plan(F3::get('COOKIE.se_user_id')));
+		echo View::instance()->render('index.html');
 	}
 
 	function showlogin(){
