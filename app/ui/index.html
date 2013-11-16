@@ -48,6 +48,7 @@
       };
 
       $(document).ready(
+
         function() {$('#calendar').weekCalendar({
           timeslotsPerHour: 4,
           timeslotHeigh: 30,
@@ -78,16 +79,34 @@
             $date+=calEvent.start.getDate();
             $('#date').val($date);
             $str='新预约时间: ';
-            //$str+=calEvent.start;
+            //$str+=calEvent.id;
             $str+=$event.find('.wc-time').text();
             $('#myModalLabel').text($str);
             $('#myModal').modal();
           },
           eventDrop: function(calEvent, $event) {
-            alert("fuckyou");
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
           },
           eventResize: function(calEvent, $event) {
-            alert("happyphp");
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
           },
           eventClick: function(calEvent, $event) {
             alert("dropdown");
@@ -98,8 +117,8 @@
           eventMouseout: function(calEvent, $event) {
             //alert("out");
           },
-          eventDelete: function(calEvent, $event) {
-            //alert("deleted");
+          eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
+            $.post("/", {action: "delete", id: calEvent.id});
             calendar.weekCalendar('removeEvent',calEvent.id);
           },
           noEvents: function() {
@@ -108,7 +127,6 @@
         });
 
       });
-
     </script>
   </head>
 
@@ -187,5 +205,10 @@
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
+  <script type='text/javascript'>
+        $('#myModal').on('hidden.bs.modal', function () {
+           location.reload();
+        });
+  </script>
 </div><!-- /.modal -->
 </html>

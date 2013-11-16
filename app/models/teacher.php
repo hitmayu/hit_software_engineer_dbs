@@ -29,6 +29,12 @@ class Teacher{
 		));
 	}
 
+	static function update_booking_event($booking_plan){
+		$r = F3::get('DB')->exec("UPDATE  booking_plan SET  date = :date, time_from = :time_from, time_to = :time_to WHERE  id =:id;", 
+			array( ':id'=>$booking_plan['id'], ':date'=>$booking_plan['date'], ':time_from'=>$booking_plan['time_from'], ':time_to'=>$booking_plan['time_to']
+		));
+	}
+
 	static function c_substr($string, $from, $length = null){
     	preg_match_all('/[\x80-\xff]?./', $string, $match);
     	if(is_null($length)){
