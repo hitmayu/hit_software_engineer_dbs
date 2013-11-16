@@ -24,32 +24,29 @@
   </head>
 
   <body>
-
-    <div class="container">
-     
+   <div class="container">
       <div class="row">
        <div class="col-md-6"> 
         <form class="form-signin" method="post">
         <h2 class="form-signin-heading">注册并使用HIT校园预约</h2>
         <input name="uname" type="text" class="form-control" placeholder="用户名" autofocus>
-        <input name="upass" type="password" class="form-control" placeholder="密码">
-        <input name="upass_check" type="password" class="form-control" placeholder="二次密码">
-        <div class="control-group">
-            <label class="control-label">用户类型</label>
-            <div class="controls">
-              <select name="ugroup">
-                <option value="student">学生</option>
-                <option value="teacher">教师</option>
-              </select>
-            </div>
-          </div>
+        <input name="upass" type="password" class="form-control" placeholder="密码"autofocus>
+        <input name="upass_check" type="password" class="form-control" placeholder="确认密码">
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <a href="{{@WEB_ROOT}}sinfo" class="btn btn-default">学生注册</a>
+        <a href="{{@WEB_ROOT}}tinfo" class="btn btn-default">教师注册</a>
+
       </form>
     </div><!--/clo-md-6-->
   </div><!--/row-->
-    </div> <!-- /container -->
+    </div> 
 
+<!------------------------------------------------
+
+        </form>
+      </div>
+    </div>
+  </div><!-- Container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

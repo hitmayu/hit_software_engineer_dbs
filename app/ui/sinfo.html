@@ -1,53 +1,45 @@
-<h1>students info!</h1>
-<form class="form-horizontal" action="{{@WEB_ROOT}}sinfo" method="post">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--    <link rel="shortcut icon" href="favicon.png">-->
 
-					<h2 style="display:inline">学生信息</h2>
+    <title>{{@title}}</title>
 
-<!------------------------------------------------>
-	<div class="control-group">
-		<label class="control-label">真实姓名</label>
-		<div class="controls">
-			<input class="input-xlarge"  name="urealname" type="text" class="span3" >
-		</div>
-	</div>
+    <!-- Bootstrap core CSS -->
+    <link href="{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
 
-	<div class="control-group">
-		<label class="control-label">电话号码</label>
-		<div class="controls">
-			<div class="input-append">
-				<input class="input-xlarge" name="uphone" type="text" class="span3" >
-			</div>
-		</div>
-	</div>
+    <!-- Custom styles for this template -->
+    <link href="{{@UI}}css/login.css" rel="stylesheet">
+    <script src="{{@UI}}lib/js/bootstrap.min.js"></script>
+  
+  </head>
+  <body>
+  	<div class="container">
+      <div class="row">
+       <div class="col-md-6"> 
+       	 <h2 class="form-signin-heading"  style="text-align:center">学生注册</h2>
+       <form class="form-horizontal" action="{{@WEB_ROOT}}sinfo" method="post">
 
-	<div class="control-group">
-		<label class="control-label">学院</label>
-		<div class="controls">
-			<input class="input-xlarge"  name="ucollege" type="text" class="span3" >
-		</div>
-	</div>
+        <input name="uname" type="text" class="form-control" placeholder="真实姓名" autofocus>
 
-	<div class="control-group">
-		<label class="control-label">专业</label>
-		<div class="controls">
-			<input class="input-xlarge "  name="uspecialty" type="text" class="span3" >
-		</div>
-	</div>
+		<input name="uname" type="text" class="form-control" placeholder="电话号码" autofocus>
 
+		<input name="uname" type="text" class="form-control" placeholder="学院" autofocus>
+
+		<input name="uname" type="text" class="form-control" placeholder="专业" autofocus>
 	
-
-	
-
-
-<!------------------------------------------------>
-
-<!-- 提交按扭 -->
 <div class="form-actions">
 	<div class="controls btn-groups">
 		<input type="reset" class="btn">
-		<button type="submit" class="btn btn-primary">提交</button>
+		<button type="submit" class="btn  btn-primary">提交</button>
 	</div>
 </div>
-
-
 </form>
+</div>
+</div>
+</div>
+</body>
+</html>

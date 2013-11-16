@@ -1,5 +1,3 @@
-<h1>search teacher!</h1>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,8 +14,9 @@
 
     <!-- Custom styles for this template -->
     <link href="{{@UI}}css/login.css" rel="stylesheet">
+    <link href="{{@UI}}css/search.css" rel="stylesheet">
     <script src="{{@UI}}lib/js/bootstrap.min.js"></script>
-
+    <script src="{{@UI}}js/jQuery.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -33,10 +32,10 @@
        <div class="col-md-6"> 
         <form class="form-signin" method="post">
         <h2 class="form-signin-heading">查询教师</h2>
-        
-		<input name="utname" type="text" class="form-control" placeholder="查询的教师名" autofocus>
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">查询</button>
+        <div id="search">
+　       <input type="text" name="k" class="k" />&nbsp;<input         type="button" name="s" value="搜索" />
+        </div>
+        <div id="search_auto"></div>
       </form>
     </div><!--/clo-md-6-->
   </div><!--/row-->
