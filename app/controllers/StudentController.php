@@ -24,10 +24,16 @@ class StudentController{
 	function showsBooking()
 	{
 		F3::set('title',"预约");
-		F3::set('utid',F3::get('GET.utid'));
-		//$tid=F3::get('GET.utid');
-		//echo $tid;
-		echo Template::instance()->render('booking.html');
+		$id=F3::get('GET.utid');
+		F3::set('utid',$id);
+		$tinfo_array=F3::get('DB')->exec('SELECT * FROM teacher WHERE tid =:tid',
+			array(':tid'=>$id));
+		$tinfo=$tinfo_array[0];
+		F3::set('urealname',$tinfo['realname']);
+		F3::set('plan', Teacher::get_booking_plan($id));
+		F3::set('sid', F3::get('COOKIE.se_user_id'));
+		//print_r(Teacher::get_booking_plan(F3::get('GET.utid')));
+		echo View::instance()->render('booking.html');
 	}
 	function sbooking()
 	{

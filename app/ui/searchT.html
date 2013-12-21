@@ -30,11 +30,9 @@
        <div class="col-md-6"> 
         <form class="form-signin" method="post">
         <h2 class="form-signin-heading">查询教师</h2>
-        <div id="search">
-　       <input type="text" name="k" class="k">&nbsp;</input>
-         <button type="button">搜索</button>
-        </div>
-        <div id="search_auto"></div>
+        <input name="utname" type="text" class="form-control" placeholder="教师姓名" autofocus>
+        <button class="btn btn-default pull-right" type="submit">搜索</button>
+        <a href="{{@WEB_ROOT}}" class="btn btn-default">返回</a>
       </form>
     </div><!--/clo-md-6-->
   </div><!--/row-->

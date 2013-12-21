@@ -5,48 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-<!--    <link rel="shortcut icon" href="favicon.png">-->
 
-    <title>{{@title}}</title>
+    <title><?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{@WEB_ROOT}}{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $UI; ?>lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $UI; ?>lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{{@WEB_ROOT}}{{@UI}}css/login.css" rel="stylesheet">
-    <script src="{{@WEB_ROOT}}{{@UI}}lib/js/jquery-2.0.3.js"></script>
-    <script src="{{@WEB_ROOT}}{{@UI}}lib/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>lib/css/jquery-ui.min.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/jquery.weekcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/teacher.css' />
+    <style type='text/css'>
+    p.description {
+      font-size: 0.8em;
+      padding: 1em;
+      position: absolute;
+      top: 3.2em;
+      margin-right: 400px;
+    }
+    </style>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-2.0.3.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="<?php echo $UI; ?>lib/js/date.js"></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>js/jquery.weekcalendar.student.js'></script>
+    <script type='text/javascript'>
+      var eventData = {
+        events : [
+          <?php
+            $count = count($plan);
+            for ($i=0; $i <$count; $i++) {
+              if ($i>0) echo ",\n";
+              $start_hour=substr($plan[$i]['time_from'],0,2);
+              $start_min=substr($plan[$i]['time_from'],3,2);
+              $end_hour=substr($plan[$i]['time_to'],0,2);
+              $end_min=substr($plan[$i]['time_to'],3,2);
+              echo '{\'id\':'.$plan[$i]['id'].', \'start\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$start_hour.', '.$start_min.'), \'end\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$end_hour.', '.$end_min.'),\'title\':\''.$plan[$i]['note'].'\'}';
+            }
+          ?>
+        ]
+      };
+
+      $(document).ready(
+
+        function() {$('#calendar').weekCalendar({
+          timeslotsPerHour: 4,
+          timeslotHeigh: 30,
+          hourLine: true,
+          data: eventData,
+          
+          height: function($calendar) {
+            return $(window).height() - $('h1').outerHeight(true);
+          },
+          eventRender : function(calEvent, $event) {
+            if (calEvent.end.getTime() < new Date().getTime()) {
+              $event.css('backgroundColor', '#DDD');
+              $event.find('.wc-time').css({'backgroundColor': '#DDD', 'border':'1px solid #DDD'});
+            }else{
+              $event.css('backgroundColor', '#97CBFF');
+              $event.find('.wc-time').css({'backgroundColor': '#97CBFF', 'border':'1px solid #97CBFF'});
+            }
+          },
+          eventNew: function(calEvent, $event) {
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
+            $('#start').val($start);
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $('#date').val($date);
+            $str='新预约时间: ';
+            //$str+=calEvent.id;
+            $str+=$event.find('.wc-time').text();
+            $('#myModalLabel').text($str);
+            $('#myModal').modal();
+          },
+          eventDrop: function(calEvent, $event) {
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
+            $('#start').val($start);
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/teacher", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+          },
+          eventResize: function(calEvent, $event) {
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
+            $('#start').val($start);
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/teacher", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+          },
+          eventClick: function(calEvent, $event) {
+            $('#note').text(calEvent.title);
+            $('#plan_id').val(calEvent.id);
+          },
+          eventMouseover: function(calEvent, $event) {
+            //alert("over");
+          },
+          eventMouseout: function(calEvent, $event) {
+            //alert("out");
+          },
+          eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
+            $.post("/teacher", {action: "delete", id: calEvent.id});
+            calendar.weekCalendar('removeEvent',calEvent.id);
+          },
+          noEvents: function() {
+            
+          }
+        });
+
+      });
+    </script>
   </head>
 
   <body>
    <div class="container">
       <div class="row">
-       <div class="col-md-6"> 
-        <form class="form-signin" method="post">
-        <h2 class="form-signin-heading">选择时间</h2>
-        <input name="utime_from" type="text" class="form-control" placeholder="起始时间(00:00)" autofocus>
-        <input name="utime_to" type="text" class="form-control" placeholder="终止时间(00:00)" autofocus>
- 
-        
-        <button class="btn btn-default pull-right" type="submit">确认</button>
-        <table class="table table-bordered table-striped">
-        <tbody>
-          <tr>
-            <td width="30%">教师id</th>
-            <td>{{@utid}}</th>
-          </tr>
-  </tbody>
-</table>
-      </form>
-    </div><!--/clo-md-6-->
-  </div><!--/row-->
-    </div> 
+        <div class="col-lg-3"> 
+          <form method="post">
+          <h2 class="form-signin-heading">选择时间</h2>
+          <input name="time_from" type="text" class="form-control" placeholder="起始时间(00:00)" autofocus>
+          <input name="time_to" type="text" class="form-control" placeholder="终止时间(00:00)" autofocus>
+          <input id="plan_id" type="hidden" name="plan_id" value="">
+          <input id="sid" type="hidden" name="sid" value="<?php echo $sid; ?>">
+          
+          <button class="btn btn-default pull-right" type="submit">确认</button>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">预约成功!</h4>
+              </div>
+              <div class="modal-body">
+                到预约时间后我们会用短信通知您.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <table class="table table-bordered table-striped">
+          <tbody id="info">
+            <tr>
+              <td width="30%">教师</th>
+              <td><?php echo $urealname; ?></th>
+            </tr>
+            <tr>
+              <td width="30%">留言</th>
+              <td id='note'></th>
+            </tr>
+          </tbody>
+          </table>
+          </form>
+        </div><!--/clo-md-6-->
+        <div class="col-lg-9"> 
+          <ul class="nav navbar-nav navbar-right">
+            <div class="btn-group navbar-btn">
+              <button type="button" class="wc-prev btn btn-default">上周</button>
+              <button type="button" class="wc-today btn btn-default">今天</button>
+              <button type="button" class="wc-next btn btn-default">下周</button>
+            </div>
+            <div class="btn-group navbar-btn" style="width:100px"></div>
+            <div class="btn-group navbar-btn">
+              <a href="<?php echo $WEB_ROOT; ?>user/searchT" class="btn btn-default">返回</a>
+            </div>
+            <div class="btn-group navbar-btn" style="width:15px"></div>
+          </ul>
+          <div id='calendar'></div>
+        </div>
+    </div><!--/row-->
+  </div> 
 
 <!------------------------------------------------
 
