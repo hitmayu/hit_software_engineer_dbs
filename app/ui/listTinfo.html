@@ -1,27 +1,64 @@
-<h1>list teacher info!</h1>
-<table class="table table-bordered table-striped">
-	<thead>
-	</thead>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--    <link rel="shortcut icon" href="favicon.png">-->
+
+   <title>{{@title}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{@WEB_ROOT}}{{@UI}}lib/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{@WEB_ROOT}}{{@UI}}css/login.css" rel="stylesheet">
+    <script src="{{@WEB_ROOT}}{{@UI}}lib/js/jquery-2.0.3.js"></script>
+    <script src="{{@WEB_ROOT}}{{@UI}}lib/js/bootstrap.min.js"></script>
+  
+  </head>
+  <body>
+  	 <div class="container">
+      <div class="row">
+       <div class="col-md-6"> 
+       	 <h2 class="form-signin-heading" style="text-align:center">教师信息</h2>
+	  
+		 <table class="table table-bordered table-striped">
 				<tbody>
 					<tr>
-						<td width="25%">真实姓名：</th>
+						<td width="30%">教师姓名</th>
 						<td>{{@urealname}}</th>
 					</tr>
 					<tr>
-						<td>电话号码：</td>
+						<td>电话号码</td>
 						<td>{{@uphone}}</td>
 					</tr>
 					<tr>
-						<td>学院：</td>
+						<td>学院</td>
 						<td>{{@ucollege}}</td>
 					</tr>
 					<tr>
-						<td>职务：</td>
+						<td>职务</td>
 						<td>{{@ujob}}</td>
 					</tr>
 					<tr>
-						<td>办公地点：</td>
+						<td>办公地点</td>
 						<td>{{@ulocation}}</td>
 					</tr>
 	</tbody>
 </table>
+<a href="{{@WEB_ROOT}}sbooking?utid={{@utid}}" class="btn btn-default btn-lg active" role="button">预约</a>
+<!------------------------------------------------>
+
+
+<!-- 提交按扭 -->
+
+		<!--<button href="{{@WEB_ROOT}}" class="btn btn-primary">预约</button>-->
+
+
+
+</div>
+</div>
+</div>
+</body>
+</html>

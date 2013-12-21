@@ -5,6 +5,7 @@ class Home{
 	function run(){
 		F3::set('title',"HIT 校园预约");
 		F3::set('plan', Teacher::get_booking_plan(F3::get('COOKIE.se_user_id')));
+		//F3::reroute('/fetion');
 		echo View::instance()->render('index.html');
 	}
 
@@ -134,6 +135,9 @@ class Home{
 		//	array(':usid'=>$info['sid']));
 		//$r['name']="mayu";
 		//$r['usertype']=$user['usertype'];
+		F3::set("success_msg", "温馨提示--在注册成功之后, 校园预约会加您为飞信好友, 请务必同意, 否则无法享受短信通知服务.");
+		$msg = new PHPFetion(F3::get('Fetionphone'), F3::get('Fetionpasswd'));
+		$msg->addfriend("校园预约", $info['phone']);
 		User::login($info);
 		F3::reroute('/');
 		//echo Template::instance()->render('login.html');
@@ -155,6 +159,9 @@ class Home{
 		//	array('utid'=>$info['tid']));
 		//$r['name']=$user['name'];
 		//$r['usertype']=$user['usertype'];
+		F3::set("success_msg", "温馨提示--在注册成功之后, 校园预约会加您为飞信好友, 请务必同意, 否则无法享受短信通知服务.");
+		$msg = new PHPFetion(F3::get('Fetionphone'), F3::get('Fetionpasswd'));
+		$msg->addfriend("校园预约", $info['phone']);
 		$info['usertype']='teacher';
 		User::login($info);
 		F3::reroute('/');
