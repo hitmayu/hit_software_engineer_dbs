@@ -3,9 +3,29 @@
 class Home{
 
 	function run(){
+		$type=F3::get('COOKIE.se_user_type');
+		if ($type=='teacher'){
+			F3::reroute('/teacher');
+		}else if ($type=='student'){
+			F3::reroute('/student');
+		}else{
+			F3::reroute('/login');
+		}
+	}
+
+	function student(){
+		F3::set('title',"HIT 校园预约");
+		F3::set('plan', Student::get_booking_log(F3::get('COOKIE.se_user_id')));
+		//F3::set('plan', "");
+		echo View::instance()->render('student.html');
+	}
+
+	function teacher(){
 		F3::set('title',"HIT 校园预约");
 		F3::set('plan', Teacher::get_booking_plan(F3::get('COOKIE.se_user_id')));
-		echo View::instance()->render('index.html');
+		//$plan=Teacher::get_booking_plan(F3::get('COOKIE.se_user_id'));
+		//print_r($plan);
+		echo View::instance()->render('teacher.html');
 	}
 
 	function showlogin(){
@@ -56,6 +76,12 @@ class Home{
 			
 		}
 	}
+
+	function logout(){
+		setcookie('se_user_type','');
+		F3::reroute('/');
+	}
+
 	function showSignUp(){
 		F3::set('title',"注册");
 		//F3::set("msg", "zhengchang");

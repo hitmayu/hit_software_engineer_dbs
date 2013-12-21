@@ -37,10 +37,10 @@
             $count = count($plan);
             for ($i=0; $i <$count; $i++) {
               if ($i>0) echo ",\n";
-              $start_hour=floor($plan[$i]['time_from']/4)+6;
-              $start_min=($plan[$i]['time_from']%4)*15;
-              $end_hour=floor($plan[$i]['time_to']/4)+6;
-              $end_min=($plan[$i]['time_to']%4)*15;
+              $start_hour=substr($plan[$i]['time_from'],0,2);
+              $start_min=substr($plan[$i]['time_from'],3,2);
+              $end_hour=substr($plan[$i]['time_to'],0,2);
+              $end_min=substr($plan[$i]['time_to'],3,2);
               echo '{\'id\':'.$plan[$i]['id'].', \'start\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$start_hour.', '.$start_min.'), \'end\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$end_hour.', '.$end_min.'),\'title\':\''.$plan[$i]['note'].'\'}';
             }
           ?>
@@ -66,11 +66,17 @@
               $event.css('backgroundColor', '#97CBFF');
               $event.find('.wc-time').css({'backgroundColor': '#97CBFF', 'border':'1px solid #97CBFF'});
             }
+            $event.popover({placement:'left', html:'true'});
+            $event.attr("data-container", "body");
+            $event.attr("data-toggle", "popover");
+            var tex = calEvent.title;
+            $event.attr("data-content", '<form class=\"form-horizontal\" role=\"form\" method=\"post\"><div class=\"form-group\"><label class=\"col-sm-2 control-label\">留言:</label><div class=\"col-sm-10\"><textarea name=\"note\" class=\"form-control\" placeholder=\"'+tex+'\" rows=\"5\"></textarea></div></div><input type=\"hidden\" name=\"action\" value=\"update_note\"><button class=\"btn btn-default\" type=\"submit\">保存</button></form>'+'<form class=\"form-horizontal\" role=\"form\" method=\"post\"><div class=\"form-group\"><input type=\"hidden\" name=\"action\" value=\"delete\"><input type=\"hidden\" name=\"id\" value=\"'+calEvent.id+'\"><button class=\"btn btn-danger\" type=\"submit\">删除</button></form>');
+            $event.attr("data-original-title", "详细信息");
           },
           eventNew: function(calEvent, $event) {
-            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
             $('#start').val($start);
-            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
             $('#end').val($end);
             $date=calEvent.start.getFullYear();
             $date+='-';
@@ -85,31 +91,32 @@
             $('#myModal').modal();
           },
           eventDrop: function(calEvent, $event) {
-            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
             $('#start').val($start);
-            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
             $('#end').val($end);
             $date=calEvent.start.getFullYear();
             $date+='-';
             $date+=calEvent.start.getMonth()+1;
             $date+='-';
             $date+=calEvent.start.getDate();
-            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+            $.post("/teacher", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
           },
           eventResize: function(calEvent, $event) {
-            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $start=calEvent.start.getHours()+':'+calEvent.start.getMinutes()+':00';
             $('#start').val($start);
-            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $end=calEvent.end.getHours()+':'+calEvent.end.getMinutes()+':00';
             $('#end').val($end);
             $date=calEvent.start.getFullYear();
             $date+='-';
             $date+=calEvent.start.getMonth()+1;
             $date+='-';
             $date+=calEvent.start.getDate();
-            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+            $.post("/teacher", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
           },
           eventClick: function(calEvent, $event) {
-            alert("dropdown");
+            $event.popover({placement:left});
+            //$event.attr("data-trigger","toggle");
           },
           eventMouseover: function(calEvent, $event) {
             //alert("over");
@@ -118,7 +125,7 @@
             //alert("out");
           },
           eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
-            $.post("/", {action: "delete", id: calEvent.id});
+            $.post("/teacher", {action: "delete", id: calEvent.id});
             calendar.weekCalendar('removeEvent',calEvent.id);
           },
           noEvents: function() {
@@ -137,22 +144,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <div class="btn-group navbar-btn">
-          <button type="button" class="btn btn-default">今天</button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">2011年7月11日 <span class="caret"></span></button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+          <button type="button" class="wc-prev btn btn-default">上周</button>
+          <button type="button" class="wc-today btn btn-default">今天</button>
+          <button type="button" class="wc-next btn btn-default">下周</button>
         </div>
         <div class="btn-group navbar-btn" style="width:100px"></div>
         <div class="btn-group navbar-btn">
-          <a href="<?php echo $WEB_ROOT; ?>login" class="btn btn-default">登录</a>
-          <!-- <button type="button" class="btn btn-default" href="/login">登陆</button>-->
-          <a href="<?php echo $WEB_ROOT; ?>signup" class="btn btn-default">注册</a>
-          <a href="<?php echo $WEB_ROOT; ?>user/searchT" class="btn btn-default">查询</a>
+          <a href="<?php echo $WEB_ROOT; ?>logout" class="btn btn-default">注消</a>
         </div>
         <div class="btn-group navbar-btn" style="width:15px"></div>
       </ul>

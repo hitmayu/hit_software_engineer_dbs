@@ -47,6 +47,7 @@ class Teacher{
 
 	static function delete_booking_event($id){
 		$r=F3::get('DB')->exec("DELETE FROM booking_plan WHERE id = :id;", array(':id'=>$id));
+		$r=F3::get('DB')->exec("UPDATE booking_log SET status='canceled' WHERE plan_id = :id;", array(':id'=>$id));
 	}
 };
 ?>

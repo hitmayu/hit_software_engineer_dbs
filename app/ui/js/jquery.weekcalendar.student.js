@@ -66,10 +66,10 @@
         switchDisplay: {},
         scrollToHourMillis: 500,
         allowEventDelete: false,
-        allowCalEventOverlap: true,
+        allowCalEventOverlap: false,
         overlapEventsSeparate: true,
         totalEventsWidthPercentInOneColumn: 100,
-        readonly: false,
+        readonly: true,
         allowEventCreation: true,
         hourLine: true,
         deletable: function(calEvent, element) {

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?php echo $title; ?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo $UI; ?>lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $UI; ?>lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>lib/css/jquery-ui.min.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/jquery.weekcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='<?php echo $UI; ?>css/teacher.css' />
+    <style type='text/css'>
+    p.description {
+      font-size: 0.8em;
+      padding: 1em;
+      position: absolute;
+      top: 3.2em;
+      margin-right: 400px;
+    }
+    </style>
+
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-2.0.3.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>lib/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="<?php echo $UI; ?>lib/js/date.js"></script>
+    <script type='text/javascript' src='<?php echo $UI; ?>js/jquery.weekcalendar.student.js'></script>
+    <script type='text/javascript'>
+      var eventData = {
+        events : [
+          <?php
+            $count = count($plan);
+            for ($i=0; $i <$count; $i++) {
+              if ($i>0) echo ",\n";
+              $start_hour=substr($plan[$i]['time_from'],0,2);
+              $start_min=substr($plan[$i]['time_from'],3,2);
+              $end_hour=substr($plan[$i]['time_to'],0,2);
+              $end_min=substr($plan[$i]['time_to'],3,2);
+              $title=$plan[$i]['teacher'].' '.$plan[$i]['location'];
+              //print_r($plan[$i]);
+              echo '{\'id\':'.$plan[$i]['log_id'].', \'start\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$start_hour.', '.$start_min.'), \'end\': new Date('.$plan[$i]['year'].', '.$plan[$i]['month'].'-1, '.$plan[$i]['day'].', '.$end_hour.', '.$end_min.'),\'title\':\''.$title.'\'}';
+            }
+          ?>
+        ]
+      };
+
+      $(document).ready(
+
+        function() {$('#calendar').weekCalendar({
+          timeslotsPerHour: 4,
+          timeslotHeigh: 30,
+          hourLine: true,
+          data: eventData,
+          
+          height: function($calendar) {
+            return $(window).height() - $('h1').outerHeight(true);
+          },
+          eventRender : function(calEvent, $event) {
+            if (calEvent.end.getTime() < new Date().getTime()) {
+              $event.css('backgroundColor', '#DDD');
+              $event.find('.wc-time').css({'backgroundColor': '#DDD', 'border':'1px solid #DDD'});
+            }else{
+              $event.css('backgroundColor', '#97CBFF');
+              $event.find('.wc-time').css({'backgroundColor': '#97CBFF', 'border':'1px solid #97CBFF'});
+            }
+            $event.popover({placement:'left', html:'true'});
+            $event.attr("data-container", "body");
+            $event.attr("data-toggle", "popover");
+            var tex = calEvent.title;
+            $event.attr("data-content", '<form class=\"form-horizontal\" role=\"form\" method=\"post\"><div class=\"form-group\"><label class=\"col-sm-2 control-label\">留言:</label><div class=\"col-sm-10\"><textarea name=\"note\" class=\"form-control\" placeholder=\"'+tex+'\" rows=\"5\"></textarea></div></div><input type=\"hidden\" name=\"action\" value=\"update_note\"><button class=\"btn btn-default\" type=\"submit\">保存</button></form>'+'<form class=\"form-horizontal\" role=\"form\" method=\"post\"><div class=\"form-group\"><input type=\"hidden\" name=\"action\" value=\"delete\"><input type=\"hidden\" name=\"id\" value=\"'+calEvent.id+'\"><button class=\"btn btn-danger\" type=\"submit\">删除</button></form>');
+            $event.attr("data-original-title", "详细信息");
+          },
+          eventNew: function(calEvent, $event) {
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $('#date').val($date);
+            $str='新预约时间: ';
+            //$str+=calEvent.id;
+            $str+=$event.find('.wc-time').text();
+            $('#myModalLabel').text($str);
+            $('#myModal').modal();
+          },
+          eventDrop: function(calEvent, $event) {
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+          },
+          eventResize: function(calEvent, $event) {
+            $start=(calEvent.start.getHours()-6)*4+calEvent.start.getMinutes()/15;
+            $('#start').val($start);
+            $end=(calEvent.end.getHours()-6)*4+calEvent.end.getMinutes()/15;
+            $('#end').val($end);
+            $date=calEvent.start.getFullYear();
+            $date+='-';
+            $date+=calEvent.start.getMonth()+1;
+            $date+='-';
+            $date+=calEvent.start.getDate();
+            $.post("/", {action: "update", id: calEvent.id, date: $date, start: $start, end: $end});
+          },
+          eventClick: function(calEvent, $event) {
+            $event.popover({placement:left});
+            //$event.attr("data-trigger","toggle");
+          },
+          eventMouseover: function(calEvent, $event) {
+            //alert("over");
+          },
+          eventMouseout: function(calEvent, $event) {
+            //alert("out");
+          },
+          eventDelete: function(calEvent, element, dayFreeBusyManager, calendar, clickEvent) {
+            $.post("/", {action: "delete", id: calEvent.id});
+            calendar.weekCalendar('removeEvent',calEvent.id);
+          },
+          noEvents: function() {
+            
+          }
+        });
+
+      });
+    </script>
+  </head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+      <ul class="nav navbar-nav">
+          <h2>&ensp;HIT 校园预约</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <div class="btn-group navbar-btn">
+          <button type="button" class="wc-prev btn btn-default">上周</button>
+          <button type="button" class="wc-today btn btn-default">今天</button>
+          <button type="button" class="wc-next btn btn-default">下周</button>
+        </div>
+        <div class="btn-group navbar-btn" style="width:100px"></div>
+        <div class="btn-group navbar-btn">
+          <a href="<?php echo $WEB_ROOT; ?>logout" class="btn btn-default">注消</a>
+          <a href="<?php echo $WEB_ROOT; ?>user/searchT" class="btn btn-default">查询</a>
+        </div>
+        <div class="btn-group navbar-btn" style="width:15px"></div>
+      </ul>
+      <div id='calendar'></div>
+    </div> <!-- /container -->
+  </body>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" method="post">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">人数:</label>
+            <div class="col-sm-10">
+              <input name="people" type="number" class="form-control" placeholder="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">地址:</label>
+            <div class="col-sm-10">
+              <textarea name="address" class="form-control" placeholder="默认地址" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">留言:</label>
+            <div class="col-sm-10">
+              <textarea name="note" class="form-control" placeholder="默认留言" rows="5"></textarea>
+            </div>
+          </div>
+          <input id="start" type="hidden" name="start" value="">
+          <input type="hidden" name="action" value="add">
+          <input id="end" type="hidden" name="end" value="">
+          <input id="date" type="hidden" name="date" value="">
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-7">
+              <div class="checkbox">
+                <label>
+                  <input name="confirm" type="checkbox">需要确认
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button class="btn btn-default" type="submit">保存</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  <script type='text/javascript'>
+        $('#myModal').on('hidden.bs.modal', function () {
+           location.reload();
+        });
+  </script>
+</div><!-- /.modal -->
+</html>
